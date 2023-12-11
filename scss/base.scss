@@ -4,6 +4,9 @@ body {
     font-family: variables.$font-family-primary;
     background: map-get(variables.$baseColors, "primary");
     min-height: 100vh;
-    padding: map-get(variables.$padding, "bodyPadding");
     padding-bottom: 0;
+}
+
+.main {
+    padding: map-get(variables.$padding, "bodyPadding");
 }

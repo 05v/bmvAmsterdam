@@ -1,0 +1,126 @@
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.header {
+    padding: 0;
+    margin: 0;
+    padding: map-get(variables.$padding, "bodyPadding");
+    background-color: map-get(variables.$headerColors, "backgroundColor");
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: variables.$font-family-secondary;
+    color: map-get(variables.$headerColors, "textColor");
+    height: 100%;
+
+    &__expanded {
+        padding-bottom: 15rem;
+    }
+
+    &__section--left {}
+
+    &__home {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__logo {
+        width: 17rem;
+    }
+
+    &__section--right {}
+
+    &__navigation {}
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 4rem;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: map-get(variables.$headerColors, "textColor");
+        font-weight: 600;
+
+        &:hover {
+            cursor: pointer;
+            color: map-get(variables.$headerColors, "textColor");
+            text-decoration: underline;
+        }
+
+        &--highlight {
+            color: map-get(variables.$baseColors, "primary");
+            background-color: map-get(variables.$baseColors, "accent");
+            padding: 1.5rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            border-radius: 2rem;
+            transition: background-color 0.25s;
+
+            &:hover {
+                color: map-get(variables.$baseColors, "primary");
+                background-color: darken(map-get(variables.$baseColors, "accent"), 5%);
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__dropdowntoggle {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        transition: color 0.2s;
+
+        &:hover {
+            color: map-get(variables.$baseColors, "accent");
+        }
+    }
+
+    &__dropdown {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        gap: 1.5rem;
+        padding-top: 1.5rem;
+
+        &-item {
+            text-decoration: none;
+            color: map-get(variables.$headerColors, "headerDropdownColor");
+            font-weight: 500;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+//                         <ul class="header__dropdown">
+//                             <li>
+//                                 <a href="https://www.amsterdam.nl/pmb/mensen/" class="header__dropdown-item">Mensen</a>
+//                             </li>
+//                             <li>
+//                                 <a href="https://www.amsterdam.nl/pmb/expertise/"
+//                                     class="header__dropdown-item">Expertise</a>
+
+
+.header__item--has-dropdown .header__dropdown {
+    display: none;
+    position: absolute;
+}
+
+.header__item--has-dropdown:hover .header__dropdowntoggle {
+    color: map-get(variables.$baseColors, "accent");
+    text-decoration: underline;
+}
+
+.header__item--has-dropdown:hover .header__dropdown {
+    display: flex;
+}
