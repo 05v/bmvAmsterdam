@@ -93,6 +93,8 @@
             text-decoration: none;
             color: map-get(variables.$headerColors, "headerDropdownColor");
             font-weight: 500;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
 
             &:hover {
                 cursor: pointer;
@@ -102,25 +104,18 @@
     }
 }
 
-//                         <ul class="header__dropdown">
-//                             <li>
-//                                 <a href="https://www.amsterdam.nl/pmb/mensen/" class="header__dropdown-item">Mensen</a>
-//                             </li>
-//                             <li>
-//                                 <a href="https://www.amsterdam.nl/pmb/expertise/"
-//                                     class="header__dropdown-item">Expertise</a>
-
-
 .header__item--has-dropdown .header__dropdown {
     display: none;
     position: absolute;
 }
 
-.header__item--has-dropdown:hover .header__dropdowntoggle {
+.header__item--has-dropdown:hover .header__dropdowntoggle,
+.header__dropdowntoggle:focus,
+.header__dropdown-item:focus .header__dropdowntoggle {
     color: map-get(variables.$baseColors, "accent");
     text-decoration: underline;
 }
 
-.header__item--has-dropdown:hover .header__dropdown {
+.header__dropdown.show {
     display: flex;
 }

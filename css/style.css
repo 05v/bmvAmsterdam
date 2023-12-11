@@ -99,6 +99,8 @@ body {
   text-decoration: none;
   color: #000000;
   font-weight: 500;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .header__dropdown-item:hover {
   cursor: pointer;
@@ -110,12 +112,14 @@ body {
   position: absolute;
 }
 
-.header__item--has-dropdown:hover .header__dropdowntoggle {
+.header__item--has-dropdown:hover .header__dropdowntoggle,
+.header__dropdowntoggle:focus,
+.header__dropdown-item:focus .header__dropdowntoggle {
   color: #EC000D;
   text-decoration: underline;
 }
 
-.header__item--has-dropdown:hover .header__dropdown {
+.header__dropdown.show {
   display: flex;
 }
 
