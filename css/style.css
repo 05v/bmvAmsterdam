@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 4rem;
+  padding-bottom: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
