@@ -5,6 +5,7 @@ class Dropdown {
     );
     this.dropdownMenu = document.querySelector(`${selector} .header__dropdown`);
     this.header = document.querySelector(".header");
+    this.activatedByKeyboard = false;
 
     if (this.dropdownToggle) {
       this.initEvents();
@@ -21,19 +22,56 @@ class Dropdown {
     }
   }
 
+  checkFocusWithin() {
+    // Delay the check to allow focus to move to the new element
+    setTimeout(() => {
+      if (
+        !this.dropdownToggle.contains(document.activeElement) &&
+        !this.dropdownMenu.contains(document.activeElement)
+      ) {
+        this.hideDropdown();
+        this.activatedByKeyboard = false;
+      }
+    }, 1);
+  }
+
+  hideDropdown() {
+    this.dropdownMenu.classList.remove("show");
+    this.header.classList.remove("header__expanded");
+  }
+
   initEvents() {
     this.dropdownToggle.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
+        this.activatedByKeyboard = true;
         this.toggle();
       }
     });
 
-    this.dropdownToggle.parentElement.addEventListener("mouseenter", () =>
-      this.toggle()
-    );
-    this.dropdownToggle.parentElement.addEventListener("mouseleave", () =>
-      this.toggle()
-    );
+    this.dropdownToggle.parentElement.addEventListener("mouseenter", () => {
+      if (!this.activatedByKeyboard) {
+        this.toggle();
+      }
+    });
+
+    this.dropdownToggle.parentElement.addEventListener("mouseleave", () => {
+      if (!this.activatedByKeyboard) {
+        this.toggle();
+      }
+    });
+
+    // Handling blur event
+    this.dropdownToggle.addEventListener("blur", () => {
+      this.checkFocusWithin();
+    });
+
+    // Adding blur event listener to each dropdown link
+    const dropdownLinks = this.dropdownMenu.querySelectorAll("a");
+    dropdownLinks.forEach((link) => {
+      link.addEventListener("blur", () => {
+        this.checkFocusWithin();
+      });
+    });
   }
 }
 
