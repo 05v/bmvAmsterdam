@@ -1,4 +1,16 @@
 @use 'variables';
 @use 'mixins';
 
-@media screen and (max-width: 62.5rem) {}
+@media screen and (max-width: 800px) {
+    .header {
+        &__section {
+            &--right {
+                display: none;
+            }
+        }
+
+        &__hamburger {
+            display: flex;
+        }
+    }
+}
