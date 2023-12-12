@@ -60,7 +60,6 @@ body {
   height: 100vh;
   background-color: #F8F9FA;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: left 0.3s ease;
@@ -84,6 +83,8 @@ body {
 .header__list-mobile {
   flex-direction: column;
   gap: 3rem;
+  width: 25rem;
+  height: 38rem;
 }
 .header__link {
   text-decoration: none;

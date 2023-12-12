@@ -41,7 +41,6 @@
         height: 100vh;
         background-color: map-get(variables.$headerColors, "backgroundColor");
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         transition: left 0.3s ease;
@@ -75,6 +74,8 @@
         &-mobile {
             flex-direction: column;
             gap: 3rem;
+            width: 25rem;
+            height: 38rem;
         }
     }
 

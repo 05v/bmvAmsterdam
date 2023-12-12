@@ -37,11 +37,44 @@ class Dropdown {
   }
 }
 
-class MobileMenu {
+class DropdownMobile {
   constructor(selector) {
+    this.dropdownToggleMobile = document.querySelector(selector);
+    this.dropdownMenuMobile = document.querySelector(
+      ".header__dropdown-mobile"
+    );
+
+    if (this.dropdownToggleMobile) {
+      this.initEvents();
+    }
+  }
+
+  toggle() {
+    if (this.dropdownMenuMobile.style.display === "flex") {
+      this.dropdownMenuMobile.style.display = "";
+      this.dropdownMenuMobile.style.position = "";
+    } else {
+      this.dropdownMenuMobile.style.display = "flex";
+      this.dropdownMenuMobile.style.position = "static";
+    }
+  }
+
+  minimize() {
+    this.dropdownMenuMobile.style.display = "";
+    this.dropdownMenuMobile.style.position = "";
+  }
+
+  initEvents() {
+    this.dropdownToggleMobile.addEventListener("click", () => this.toggle());
+  }
+}
+
+class MobileMenu {
+  constructor(selector, dropdownMobile) {
     this.hamburger = document.querySelector(selector);
     this.mobileMenu = document.querySelector(".header__mobile-menu");
     this.icon = this.hamburger ? this.hamburger.querySelector("i") : null;
+    this.dropdownMobile = dropdownMobile;
 
     if (this.hamburger) {
       this.initEvents();
@@ -56,6 +89,7 @@ class MobileMenu {
     } else {
       this.icon.classList.remove("fa-xmark");
       this.icon.classList.add("fa-bars");
+      this.dropdownMobile.minimize();
     }
   }
 
@@ -67,6 +101,7 @@ class MobileMenu {
       this.mobileMenu.classList.remove("active");
       this.icon.classList.remove("fa-xmark");
       this.icon.classList.add("fa-bars");
+      this.dropdownMobile.minimize();
     }
   }
 
@@ -79,7 +114,8 @@ class MobileMenu {
 class App {
   constructor() {
     this.dropdown = new Dropdown(".header__item--has-dropdown");
-    this.mobileMenu = new MobileMenu(".header__hamburger");
+    this.dropdownMobile = new DropdownMobile(".header__dropdowntoggle-mobile");
+    this.mobileMenu = new MobileMenu(".header__hamburger", this.dropdownMobile);
   }
 }
 
