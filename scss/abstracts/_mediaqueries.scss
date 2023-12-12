@@ -1,6 +1,35 @@
 @use 'variables';
 @use 'mixins';
 
+@media screen and (max-width: 1080px) {
+    .footer {
+        align-items: center;
+        gap: 3rem;
+
+        &__item {
+            width: 40%;
+        }
+
+        &__items {
+            flex-direction: column;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        &__copyright {
+            padding-left: 0rem;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .footer {
+        &__item {
+            width: 60%;
+        }
+    }
+}
+
 @media screen and (max-width: 800px) {
     .header {
         &__section {
@@ -11,6 +40,22 @@
 
         &__hamburger {
             display: flex;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .footer {
+        &__item {
+            width: 80%;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .footer {
+        &__item {
+            width: 100%;
         }
     }
 }
