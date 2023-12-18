@@ -291,6 +291,28 @@ body {
   width: 90%;
 }
 
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+.banner__image {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+  display: block;
+  filter: brightness(50%);
+}
+.banner__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
 .footer {
   background-color: #757576;
   color: #ffffff;
@@ -362,6 +384,11 @@ body {
     padding-left: 0rem;
   }
 }
+@media screen and (max-width: 1000px) {
+  .banner__text {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 900px) {
   .icons {
     padding-left: 2rem;
@@ -397,8 +424,19 @@ body {
   .icons__text {
     width: 80%;
   }
+  .banner__image {
+    height: 60vh;
+  }
   .footer__item {
     width: 80%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .banner__image {
+    height: 85vh;
+  }
+  .banner__text {
+    width: 100%;
   }
 }
 @media screen and (max-width: 350px) {
