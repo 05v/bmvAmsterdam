@@ -7,5 +7,8 @@
 @use 'components/banner/banner';
 @use 'components/contact/contact';
 @use 'components/workbanner/workbanner';
+@use 'components/worktext/worktext';
+@use 'components/workimage/workimage';
+@use 'components/workcontact/workcontact';
 @use 'components/footer/footer';
 @use 'abstracts/mediaqueries';

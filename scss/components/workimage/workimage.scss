@@ -1,0 +1,13 @@
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.workimage {
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    &__image {
+        width: 100%;
+        height: 60vh;
+        object-fit: cover;
+    }
+}
