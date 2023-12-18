@@ -23,6 +23,11 @@
 }
 
 @media screen and (max-width: 900px) {
+    .icons {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .footer {
         &__item {
             width: 60%;
@@ -47,12 +52,28 @@
         padding-left: 5rem;
         padding-right: 5rem;
     }
+
+    .icons {
+        &__wrapper {
+            width: 100%;
+        }
+
+        &__text {
+            width: 60%;
+        }
+    }
 }
 
 @media screen and (max-width: 650px) {
     .info {
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+
+    .icons {
+        &__text {
+            width: 80%;
+        }
     }
 
     .footer {
