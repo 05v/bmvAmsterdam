@@ -1,0 +1,79 @@
+@use '../../abstracts/variables';
+@use '../../abstracts/mixins';
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &__button {
+        border: 0.15rem solid map-get(variables.$baseColors, "accent");
+        border-radius: 100%;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 2rem;
+        color: map-get(variables.$baseColors, "accent");
+        background-color: map-get(variables.$baseColors, "primary");
+        width: 4rem;
+        height: 4rem;
+        transition: background-color 0.2s;
+
+        &--left {
+            position: absolute;
+            left: 2rem;
+        }
+
+        &--right {
+            position: absolute;
+            right: 2rem;
+        }
+
+        &:hover {
+            background-color: darken(map-get(variables.$baseColors, "primary"), 10%);
+        }
+    }
+
+    &__viewport {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        height: 55vh;
+
+        .carousel__slide {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-family: variables.$font-family-secondary;
+        font-weight: 400;
+        font-size: 3rem;
+        color: map-get(variables.$baseColors, "primary");
+        background-color: map-get(variables.$baseColors, "accent");
+        padding: 5px 10px;
+        border-top-right-radius: 5px;
+        z-index: 5;
+        transition: transform 0.5s ease-in-out;
+    }
+}

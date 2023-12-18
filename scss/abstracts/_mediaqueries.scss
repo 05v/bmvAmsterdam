@@ -42,9 +42,19 @@
             display: flex;
         }
     }
+
+    .info {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
 }
 
 @media screen and (max-width: 650px) {
+    .info {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .footer {
         &__item {
             width: 80%;

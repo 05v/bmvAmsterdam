@@ -23,7 +23,6 @@ class Dropdown {
   }
 
   checkFocusWithin() {
-    // Delay the check to allow focus to move to the new element
     setTimeout(() => {
       if (
         !this.dropdownToggle.contains(document.activeElement) &&
@@ -60,12 +59,10 @@ class Dropdown {
       }
     });
 
-    // Handling blur event
     this.dropdownToggle.addEventListener("blur", () => {
       this.checkFocusWithin();
     });
 
-    // Adding blur event listener to each dropdown link
     const dropdownLinks = this.dropdownMenu.querySelectorAll("a");
     dropdownLinks.forEach((link) => {
       link.addEventListener("blur", () => {
@@ -149,11 +146,137 @@ class MobileMenu {
   }
 }
 
+class Carousel {
+  constructor(selector, data) {
+    this.carouselElement = document.querySelector(selector);
+    this.carouselViewport = this.carouselElement.querySelector(
+      ".carousel__viewport"
+    );
+    this.carouselData = data;
+    this.currentIndex = 0;
+    this.autoScrollInterval = null;
+    this.autoScrollDelay = 4000;
+    this.initCarousel();
+    this.initEvents();
+    this.startAutoScroll();
+  }
+
+  initCarousel() {
+    this.updateCarousel();
+  }
+
+  updateCarousel() {
+    const item = this.carouselData[this.currentIndex];
+    const image = this.carouselElement.querySelector(".carousel__image");
+    const title = this.carouselElement.querySelector(".carousel__title");
+    const link = this.carouselElement.querySelector(".carousel__link");
+
+    image.src = item.image;
+    image.alt = item.title;
+    title.textContent = item.title;
+    link.href = `/projecten/${item.link}`;
+  }
+
+  nextItem() {
+    this.currentIndex = (this.currentIndex + 1) % this.carouselData.length;
+    this.updateCarousel();
+  }
+
+  previousItem() {
+    this.currentIndex =
+      (this.currentIndex - 1 + this.carouselData.length) %
+      this.carouselData.length;
+    this.updateCarousel();
+  }
+
+  startAutoScroll() {
+    this.autoScrollInterval = setInterval(
+      () => this.nextItem(),
+      this.autoScrollDelay
+    );
+  }
+
+  stopAutoScroll() {
+    clearInterval(this.autoScrollInterval);
+  }
+
+  resetAutoScroll(delay) {
+    this.stopAutoScroll();
+    this.autoScrollDelay = delay;
+    this.startAutoScroll();
+  }
+
+  initEvents() {
+    const leftButton = this.carouselElement.querySelector(
+      ".carousel__button--left"
+    );
+    const rightButton = this.carouselElement.querySelector(
+      ".carousel__button--right"
+    );
+
+    leftButton.addEventListener("click", () => {
+      this.previousItem();
+      this.resetAutoScroll(6000);
+      setTimeout(() => this.resetAutoScroll(4000), 6000);
+    });
+
+    rightButton.addEventListener("click", () => {
+      this.nextItem();
+      this.resetAutoScroll(6000);
+      setTimeout(() => this.resetAutoScroll(4000), 6000);
+    });
+  }
+}
+
+const carouselData = [
+  {
+    title: "Nieuwbouw AICS",
+    link: "nieuwbouw-aics",
+    image:
+      "files/images/AICS/Nieuwbouw Amsterdam International Community School Buitenveldert.jpg",
+  },
+  {
+    title: "Renovatie bs de Wereldburger",
+    link: "renovatie-wereldburger",
+    image:
+      "files/images/Basisschool de Wereldburger/Nieuwbouw Basisschool De Wereldburger.jpg",
+  },
+  {
+    title: "Nieuwbouw Spinoza20first",
+    link: "nieuwbouw-spinoza20first",
+    image: "files/images/Spinoza20first/Nieuwbouw Spinoza20first.jpg",
+  },
+  {
+    title: "Amsterdam Museum",
+    link: "amsterdam-museum",
+    image: "files/images/Amsterdam Museum/Foto 1.jpg",
+  },
+  {
+    title: "Nieuwe Sporthallen Zuid",
+    link: "nieuwe-sporthallen-zuid",
+    image:
+      "files/images/Nieuwe Sporthallen Zuid/Haalbaarheidstudie Nieuwe Sporthallen Zuid.png",
+  },
+  {
+    title: "Sportpark Goed Genoeg & AFC",
+    link: "sportpark-goedgenoeg-afc",
+    image:
+      "files/images/Sportpark Goed Genoeg AFC/Sportpark Goed Genoeg Clubgebouw AFC.jpg",
+  },
+  {
+    title: "Verhalenhuis Nieuw-West Osdorpplein",
+    link: "verhalenhuis-nieuwwest-osdorpplein",
+    image:
+      "files/images/Verhalenhuis Nieuw-West Osdorpplein/01_CIE_Osdorp_Bibliotheek_Hero_05_Copyright_AbsentMatter2022.jpg",
+  },
+];
+
 class App {
   constructor() {
     this.dropdown = new Dropdown(".header__item--has-dropdown");
     this.dropdownMobile = new DropdownMobile(".header__dropdowntoggle-mobile");
     this.mobileMenu = new MobileMenu(".header__hamburger", this.dropdownMobile);
+    this.carousel = new Carousel(".carousel", carouselData);
   }
 }
 
