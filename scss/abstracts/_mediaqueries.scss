@@ -36,6 +36,12 @@
         padding-right: 2rem;
     }
 
+    .images {
+        &__image {
+            width: 100%;
+        }
+    }
+
     .footer {
         &__item {
             width: 60%;

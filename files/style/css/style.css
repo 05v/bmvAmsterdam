@@ -379,6 +379,76 @@ body {
   text-decoration: none;
 }
 
+.projectbanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.projectbanner__image {
+  width: 100%;
+  height: 55vh;
+  object-fit: cover;
+}
+.projectbanner__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  color: #ffffff;
+  background-color: #EC000D;
+  padding: 5px 10px;
+  border-top-right-radius: 5px;
+  z-index: 5;
+  transition: transform 0.5s ease-in-out;
+}
+
+.projectdescription {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.projectdescription__title {
+  font-weight: 400;
+  font-size: 3.5rem;
+}
+.projectdescription__text {
+  font-size: 2.5rem;
+}
+
+.acknowledgement {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.acknowledgement__credit {
+  font-size: 2.5rem;
+}
+.acknowledgement__link {
+  color: #EC000D;
+  text-decoration: none;
+}
+.acknowledgement__link:hover {
+  text-decoration: underline;
+}
+
+.images {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+.images__image {
+  width: 90vh;
+  object-fit: cover;
+}
+
 .workbanner {
   display: flex;
   align-items: center;
@@ -523,6 +593,9 @@ body {
   .icons {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+  .images__image {
+    width: 100%;
   }
   .footer__item {
     width: 60%;
