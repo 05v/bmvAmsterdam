@@ -136,6 +136,12 @@
         </div>
     </header>
 
+    <main class="main">
+        <section class="projects">
+            <h1 class="projects__heading">Onze projecten</h1>
+        </section>
+    </main>
+
     <footer class="footer">
         <section class="footer__items">
             <ul class="footer__item">
@@ -206,5 +212,78 @@
     </footer>
 </body>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselData = [
+            {
+                title: "Nieuwbouw AICS",
+                link: "nieuwbouw-aics",
+                image:
+                    "files/images/AICS/Nieuwbouw Amsterdam International Community School Buitenveldert.jpg",
+            },
+            {
+                title: "Renovatie bs de Wereldburger",
+                link: "renovatie-wereldburger",
+                image:
+                    "files/images/Basisschool de Wereldburger/Nieuwbouw Basisschool De Wereldburger.jpg",
+            },
+            {
+                title: "Nieuwbouw Spinoza20first",
+                link: "nieuwbouw-spinoza20first",
+                image: "files/images/Spinoza20first/Nieuwbouw Spinoza20first.jpg",
+            },
+            {
+                title: "Amsterdam Museum",
+                link: "amsterdam-museum",
+                image: "files/images/Amsterdam Museum/Foto 1.jpg",
+            },
+            {
+                title: "Nieuwe Sporthallen Zuid",
+                link: "nieuwe-sporthallen-zuid",
+                image:
+                    "files/images/Nieuwe Sporthallen Zuid/Haalbaarheidstudie Nieuwe Sporthallen Zuid.png",
+            },
+            {
+                title: "Sportpark Goed Genoeg & AFC",
+                link: "sportpark-goedgenoeg-afc",
+                image:
+                    "files/images/Sportpark Goed Genoeg AFC/Sportpark Goed Genoeg Clubgebouw AFC.jpg",
+            },
+            {
+                title: "Verhalenhuis Nieuw-West Osdorpplein",
+                link: "verhalenhuis-nieuwwest-osdorpplein",
+                image:
+                    "files/images/Verhalenhuis Nieuw-West Osdorpplein/01_CIE_Osdorp_Bibliotheek_Hero_05_Copyright_AbsentMatter2022.jpg",
+            },
+        ];
+
+        const projectsContainer = document.querySelector('.projects');
+
+        carouselData.forEach(project => {
+            const projectDiv = document.createElement('div');
+            projectDiv.className = 'projects__project';
+
+            const title = document.createElement('h4');
+            title.className = 'projects__title';
+            title.textContent = project.title;
+
+            const image = document.createElement('img');
+            image.src = `/${project.image}`;
+            image.alt = project.title;
+            image.className = 'projects__image';
+
+            const link = document.createElement('a');
+            link.href = `/projecten/${project.link}`;
+            link.className = 'projects__link';
+            link.textContent = 'Zie meer';
+
+            projectDiv.appendChild(title);
+            projectDiv.appendChild(image);
+            projectDiv.appendChild(link);
+
+            projectsContainer.appendChild(projectDiv);
+        });
+    });
+</script>
 
 </html>
