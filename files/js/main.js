@@ -121,10 +121,12 @@ class MobileMenu {
     if (this.mobileMenu.classList.contains("active")) {
       this.icon.classList.remove("fa-bars");
       this.icon.classList.add("fa-xmark");
+      document.body.style.overflow = "hidden";
     } else {
       this.icon.classList.remove("fa-xmark");
       this.icon.classList.add("fa-bars");
       this.dropdownMobile.minimize();
+      document.body.style.overflow = "";
     }
   }
 
@@ -137,6 +139,7 @@ class MobileMenu {
       this.icon.classList.remove("fa-xmark");
       this.icon.classList.add("fa-bars");
       this.dropdownMobile.minimize();
+      document.body.style.overflow = "";
     }
   }
 

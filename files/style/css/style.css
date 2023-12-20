@@ -178,7 +178,7 @@ body {
   border: 0.15rem solid #EC000D;
   border-radius: 100%;
   cursor: pointer;
-  z-index: 10;
+  z-index: 5;
   font-size: 2rem;
   color: #EC000D;
   background-color: #ffffff;
